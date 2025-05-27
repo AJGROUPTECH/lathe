@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <title>Zarbdar Precision Works</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #1a3263;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            font-style: italic;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background-color: #0f1e3b;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 0;
+        }
+        
+        nav ul li {
+            padding: 1rem 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+        
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .lang-btn {
+            background: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .lang-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .lang-btn.active {
+            background-color: #ffd700;
+            color: #333;
+            border-color: #ffd700;
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1565883329213-29c2cd7a527d?w=1200&h=600&fit=crop');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 1rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #ffd700;
+            color: #333;
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #e6c200;
+            transform: translateY(-3px);
+        }
+        
+        section {
+            padding: 5rem 1rem;
+        }
+        
+        .services {
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1a3263;
+            font-size: 2rem;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .service-card {
+            background-color: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-img {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.05);
+        }
+        
+        .service-content {
+            padding: 2rem;
+        }
+        
+        .service-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #1a3263;
+            font-weight: 600;
+        }
+        
+        .service-content p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        
+        .pricing {
+            background-color: #f5f5f5;
+        }
+        
+        .price-table {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .price-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .price-table th, .price-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .price-table th {
+            background-color: #1a3263;
+            color: white;
+        }
+        
+        .price-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .price-table tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .contact {
+            background-color: white;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .gallery {
+            background-color: #f5f5f5;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .gallery-item {
+            height: 250px;
+            background-color: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        
+        footer {
+            background-color: #1a3263;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0 1rem;
+            position: relative;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 300px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-map {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 250px;
+            height: 150px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .footer-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-section p, .footer-section a {
+            margin-bottom: 0.5rem;
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+        
+        .footer-section a:hover {
+            color: #ffd700;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1.2rem;
+        }
+        
+        .social-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+        }
+        .copyright a {
+            position: relative;
+            color: #ffd700;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .copyright a::after {
+            content: "";
+            position: absolute;
+            left: 0; bottom: -2px;
+            width: 0;
+            height: 2px;
+            background: #ffd700;
+            transition: width 0.3s;
+        }
+
+        .copyright a:hover::after,
+        .copyright a:focus::after {
+           width: 100%;
+        }
+
+        
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                padding: 0.5rem 1rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+            
+            nav ul li {
+                padding: 0.5rem 1rem;
+            }
+            
+            .language-switcher {
+                margin-bottom: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .footer-map {
+                position: relative;
+                bottom: auto;
+                right: auto;
+                width: 100%;
+                height: 200px;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Zarbdar Precision Works</div>
+        <div class="tagline">Quality Machining Services Since 2010</div>
+    </header>
+    
+    <nav id="navbar">
+        <div class="nav-container">
+            <ul>
+                <li><a href="#home" data-translate="nav_home">Home</a></li>
+                <li><a href="#services" data-translate="nav_services">Services</a></li>
+                <li><a href="#pricing" data-translate="nav_pricing">Pricing</a></li>
+                <li><a href="#gallery" data-translate="nav_gallery">Gallery</a></li>
+                <li><a href="#contact" data-translate="nav_contact">Contact</a></li>
+            </ul>
+            <div class="language-switcher">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="ru">RU</button>
+                <button class="lang-btn" data-lang="uz">UZ</button>
+            </div>
+        </div>
+    </nav>
+    
+    <section id="home" class="hero">
+        <h1 data-translate="hero_title">Zarbdar Precision Works</h1>
+        <p data-translate="hero_text">Professional machining solutions for all your needs. We specialize in custom metal work, restoration, and industrial parts fabrication.</p>
+        <a href="#contact" class="btn" data-translate="hero_btn">Request a Quote</a>
+    </section>
+    
+    <section id="services" class="services">
+        <h2 class="section-title" data-translate="services_title">Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&h=400&fit=crop" alt="Custom Fabrication">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title" data-translate="service1_title">Custom Part Fabrication</h3>
+                    <p data-translate="service1_text">We create precision parts to your exact specifications using high-quality materials and advanced lathe techniques.</p>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1666634157070-6fd830fb5672?auto=format&fit=crop&w=600&h=400&q=80" alt="Restoration">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title" data-translate="service2_title">Equipment Restoration</h3>
+                    <p data-translate="service2_text">Bring new life to old equipment with our expert restoration services for antique machinery and parts.</p>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&h=400&fit=crop" alt="Industrial Parts">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title" data-translate="service3_title">Industrial Components</h3>
+                    <p data-translate="service3_text">We produce high-precision industrial components for a wide range of applications and industries.</p>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1515707384144-8c119444db05?auto=format&fit=crop&w=600&h=400&q=80
+                    " alt="Thread Cutting">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title" data-translate="service4_title">Precision Thread Cutting</h3>
+                    <p data-translate="service4_text">Our thread cutting services ensure perfect fitting components with precise specifications.</p>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&h=400&fit=crop" alt="Repairs">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title" data-translate="service5_title">Repair Services</h3>
+                    <p data-translate="service5_text">Fast and reliable repairs for broken or worn-out parts, saving you time and money.</p>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&h=400&fit=crop" alt="Prototype">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title" data-translate="service6_title">Prototype Development</h3>
+                    <p data-translate="service6_text">Turn your ideas into reality with our prototype development services using state-of-the-art lathe equipment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="pricing" class="pricing">
+        <h2 class="section-title" data-translate="pricing_title">Our Pricing</h2>
+        <div class="price-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Starting Price</th>
+                        <th>Turnaround Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Standard Turning</td>
+                        <td>$45/hour</td>
+                        <td>1-2 Business Days</td>
+                    </tr>
+                    <tr>
+                        <td>Custom Part Fabrication</td>
+                        <td>$60/hour</td>
+                        <td>3-5 Business Days</td>
+                    </tr>
+                    <tr>
+                        <td>Thread Cutting</td>
+                        <td>$55/hour</td>
+                        <td>1-3 Business Days</td>
+                    </tr>
+                    <tr>
+                        <td>Equipment Restoration</td>
+                        <td>$70/hour</td>
+                        <td>5-10 Business Days</td>
+                    </tr>
+                    <tr>
+                        <td>Prototype Development</td>
+                        <td>$85/hour</td>
+                        <td>5-7 Business Days</td>
+                    </tr>
+                    <tr>
+                        <td>Rush Orders</td>
+                        <td>+30% of Base Price</td>
+                        <td>24-48 Hours</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p style="text-align: center; margin-top: 2rem;">Prices may vary based on material costs and project complexity. Contact us for a detailed quote.</p>
+    </section>
+    
+    <section id="gallery" class="gallery">
+        <h2 class="section-title" data-translate="gallery_title">Our Work</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=400&h=300&fit=crop" alt="Gallery Item 1">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=400&h=300&fit=crop" alt="Gallery Item 2">
+            </div>
+            <div class="gallery-item">
+                <img src="./images/lathe (1).png" alt="Gallery Item 3">
+            </div>
+            <div class="gallery-item">
+                <img src="./images/lathe2.jpg" alt="Gallery Item 4">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&h=300&fit=crop" alt="Gallery Item 5">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop" alt="Gallery Item 6">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=400&h=300&fit=crop" alt="Gallery Item 7">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=400&h=300&fit=crop" alt="Gallery Item 8">
+            </div>
+        </div>
+    </section>
+    
+    <form action="https://formspree.io/f/xrbqvowl" method="POST">
+    <section id="contact" class="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-form">
+          
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="service">Service Needed</label>
+              <select id="service" name="service" class="form-control" required>
+                <option value="">Select a Service</option>
+                <option value="custom">Custom Part Fabrication</option>
+                <option value="restoration">Equipment Restoration</option>
+                <option value="industrial">Industrial Components</option>
+                <option value="thread">Thread Cutting</option>
+                <option value="repair">Repair Services</option>
+                <option value="prototype">Prototype Development</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Project Details</label>
+              <textarea id="message" name="message" class="form-control" required></textarea>
+            </div>
+      
+            <input type="hidden" name="_redirect" value="https://yourdomain.com/thanks.html">
+      
+            <div class="form-group">
+              <button type="submit" class="btn">Send Request</button>
+            </div>
+          
+        </div>
+      </section>
+      
+    </form>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Zarbdar Precision Works</h3>
+                <p>Quality machining services since 2010. We pride ourselves on precision, reliability, and customer satisfaction.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/javlonamirqulov2"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/AmirqulovJavlon"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/amirqulov_javlon1"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>Location: Zarbdar</p>
+                <p>Phone: (+998) 95-149-4466</p>
+                <p>Email: ajdeveloper@mail.ru</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Hours of Operation</h3>
+                <p>Monday - Saturday: 8:00 AM - 7:00 PM</p>
+                <p>Saturday: 8:00 AM - 7:00 PM</p>
+                <p>Sunday: 9:00 AM - 6:00 PM</p>
+            </div>
+            
+            <div class="footer-map">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1710.5569301987612!2d68.17560888419723!3d40.086216190717636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e1!3m2!1sen!2s!4v1748163585583!5m2!1sen!2s"
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Our Location">
+                </iframe>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 Created by <a href="https://telegram.me/ajdeveloper">AJGROUP</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Translation object
+        const translations = {
+            en: {
+                nav_home: "Home",
+                nav_services: "Services",
+                nav_pricing: "Pricing",
+                nav_gallery: "Gallery",
+                nav_contact: "Contact",
+                hero_title: "Zarbdar Precision Works",
+                hero_text: "Professional machining solutions for all your needs. We specialize in custom metal work, restoration, and industrial parts fabrication.",
+                hero_btn: "Request a Quote",
+                services_title: "Our Services",
+                service1_title: "Custom Part Fabrication",
+                service1_text: "We create precision parts to your exact specifications using high-quality materials and advanced lathe techniques.",
+                service2_title: "Equipment Restoration",
+                service2_text: "Bring new life to old equipment with our expert restoration services for antique machinery and parts.",
+                service3_title: "Industrial Components",
+                service3_text: "We produce high-precision industrial components for a wide range of applications and industries.",
+                service4_title: "Precision Thread Cutting",
+                service4_text: "Our thread cutting services ensure perfect fitting components with precise specifications.",
+                service5_title: "Repair Services",
+                service5_text: "Fast and reliable repairs for broken or worn-out parts, saving you time and money.",
+                service6_title: "Prototype Development",
+                service6_text: "Turn your ideas into reality with our prototype development services using state-of-the-art lathe equipment.",
+                pricing_title: "Our Pricing",
+                gallery_title: "Our Work",
+                contact_title: "Contact Us"
+            },
+            ru: {
+                nav_home: "Главная",
+                nav_services: "Услуги",
+                nav_pricing: "Цены",
+                nav_gallery: "Галерея",
+                nav_contact: "Контакты",
+                hero_title: "Зарбдар Точные Работы",
+                hero_text: "Профессиональные решения в области обработки металла для всех ваших потребностей. Мы специализируемся на изготовлении нестандартных металлических изделий, реставрации и производстве промышленных деталей.",
+                hero_btn: "Запросить Цену",
+                services_title: "Наши Услуги",
+                service1_title: "Изготовление Деталей на Заказ",
+                service1_text: "Мы создаем точные детали в соответствии с вашими требованиями, используя высококачественные материалы и передовые токарные технологии.",
+                service2_title: "Реставрация Оборудования",
+                service2_text: "Придайте новую жизнь старому оборудованию с помощью наших экспертных услуг по реставрации антикварных механизмов и деталей.",
+                service3_title: "Промышленные Компоненты",
+                service3_text: "Мы производим высокоточные промышленные компоненты для широкого спектра применений и отраслей.",
+                service4_title: "Точная Нарезка Резьбы",
+                service4_title: "Точная Нарезка Резьбы",
+                service4_text: "Наши услуги по нарезке резьбы обеспечивают идеально подходящие компоненты с точными спецификациями.",
+                service5_title: "Ремонтные Услуги",
+                service5_text: "Быстрый и надежный ремонт сломанных или изношенных деталей, экономя ваше время и деньги.",
+                service6_title: "Разработка Прототипов",
+                service6_text: "Воплотите свои идеи в реальность с помощью наших услуг по разработке прототипов, используя современное токарное оборудование.",
+                pricing_title: "Наши Цены",
+                gallery_title: "Наши Работы",
+                contact_title: "Свяжитесь с Нами"
+            },
+            uz: {
+                nav_home: "Bosh sahifa",
+                nav_services: "Xizmatlar",
+                nav_pricing: "Narxlar",
+                nav_gallery: "Galereya",
+                nav_contact: "Aloqa",
+                hero_title: "Aniq Tokar Xizmatlari",
+                hero_text: "Barcha ehtiyojlaringiz uchun professional metall ishlov berish yechimlari. Biz maxsus metall ishları, qayta tiklash va sanoat qismlarini ishlab chiqarishga ixtisoslashganmiz.",
+                hero_btn: "Narx So'rash",
+                services_title: "Bizning Xizmatlarimiz",
+                service1_title: "Buyurtma Bo'yicha Qism Ishlab Chiqarish",
+                service1_text: "Yuqori sifatli materiallar va ilg'or tokar texnologiyalaridan foydalangan holda sizning aniq talablaringiz bo'yicha aniq qismlar yaratamiz.",
+                service2_title: "Uskunani Qayta Tiklash",
+                service2_text: "Antik mexanizmlar va qismlar uchun mutaxassis qayta tiklash xizmatlarimiz bilan eski uskunaga yangi hayot bering.",
+                service3_title: "Sanoat Komponentlari",
+                service3_text: "Keng ko'lamli qo'llanmalar va sohalar uchun yuqori aniqlikdagi sanoat komponentlarini ishlab chiqaramiz.",
+                service4_title: "Aniq Ip Kesish",
+                service4_text: "Bizning ip kesish xizmatlarimiz aniq spetsifikatsiyalar bilan mukammal mos keladigan komponentlarni ta'minlaydi.",
+                service5_title: "Ta'mirlash Xizmatlari",
+                service5_text: "Singan yoki eskirgan qismlarni tez va ishonchli ta'mirlash, vaqt va pulingizni tejaydi.",
+                service6_title: "Prototip Ishlab Chiqish",
+                service6_text: "Zamonaviy tokar uskunalaridan foydalangan holda prototip ishlab chiqish xizmatlarimiz bilan g'oyalaringizni haqiqatga aylantiring.",
+                pricing_title: "Bizning Narxlarimiz",
+                gallery_title: "Bizning Ishlarimiz",
+                contact_title: "Biz Bilan Bog'laning"
+            }
+        };
+
+        let currentLang = 'en';
+
+        // Function to translate text
+        function translatePage(lang) {
+            currentLang = lang;
+            const elements = document.querySelectorAll('[data-translate]');
+            
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // Update active language button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Store language preference
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // Language switcher event listeners
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                translatePage(lang);
+            });
+        });
+
+        // Load saved language preference on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+            translatePage(savedLang);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Simple form submission handling
+        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real implementation, you would send this data to your server
+            const thankYouMessages = {
+                en: 'Thank you for your inquiry! We will contact you shortly.',
+                ru: 'Спасибо за ваш запрос! Мы свяжемся с вами в ближайшее время.',
+                uz: 'So\'rovingiz uchun rahmat! Tez orada siz bilan bog\'lanamiz.'
+            };
+            
+            alert(thankYouMessages[currentLang]);
+            this.reset();
+        });
+        
+        // Simple sticky navigation
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.style.backgroundColor = 'rgba(15, 30, 59, 0.95)';
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.backgroundColor = '#0f1e3b';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
